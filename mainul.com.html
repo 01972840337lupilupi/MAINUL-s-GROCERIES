@@ -1,0 +1,2904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Mainul's Groceries</title>
+<style>
+:root{--black:#090909;--black2:#151515;--red:#c8102e;--red2:#ef233c;--gold:#d4af37;--gold2:#f7d774;--cream:#fffaf0;--muted:#777;--green:#16a34a}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:Arial,sans-serif;background:#f7f7f7;color:#181818}.top{background:#070707;color:#ddd;padding:8px 6%;display:flex;justify-content:space-between;font-size:13px}.top b{color:var(--gold2)}header{position:sticky;top:0;z-index:1000;background:linear-gradient(110deg,#050505,#171717);padding:14px 6%;display:flex;gap:22px;align-items:center;box-shadow:0 4px 20px #0003}.brand{display:flex;align-items:center;gap:10px;min-width:245px}.brandLogo{width:48px;height:48px;border-radius:14px;background:linear-gradient(145deg,var(--gold2),var(--gold));display:grid;place-items:center;color:#111;font-size:24px;font-weight:900}.brand h1{font-size:20px;color:#fff}.brand small{color:var(--gold2);letter-spacing:1.5px}.search{flex:1;display:flex;background:#fff;border-radius:10px;overflow:hidden}.search input{border:0;outline:0;padding:14px 16px;width:100%;font-size:15px}.search button{border:0;background:var(--red);color:#fff;padding:0 22px;font-size:18px;cursor:pointer}.actions{display:flex;gap:8px}.action{border:1px solid #444;background:#1f1f1f;color:#fff;padding:11px 13px;border-radius:8px;cursor:pointer}.action:hover{border-color:var(--gold)}.count{background:var(--red);padding:2px 6px;border-radius:20px}nav{background:var(--red);padding:11px 6%;display:flex;gap:25px;overflow:auto}nav a{color:#fff;text-decoration:none;font-weight:700;font-size:14px;white-space:nowrap}nav a:hover{color:var(--gold2)}.hero{margin:22px 6%;border-radius:20px;overflow:hidden;min-height:330px;background:radial-gradient(circle at 85% 25%,#d4af3755,transparent 28%),linear-gradient(120deg,#050505 10%,#171717 58%,#650018);box-shadow:0 14px 40px #0002}.heroInner{padding:58px;max-width:720px}.hero small{color:var(--gold2);letter-spacing:2px;font-weight:800}.hero h2{font-size:44px;color:#fff;line-height:1.08;margin:14px 0}.hero h2 span{color:var(--gold2)}.hero p{color:#ddd;line-height:1.7}.heroBtns{display:flex;gap:12px;margin-top:24px}.btn{padding:13px 22px;border:0;border-radius:8px;font-weight:800;cursor:pointer}.red{background:var(--red);color:#fff}.gold{background:var(--gold);color:#111}.section{padding:10px 6% 35px}.title{display:flex;justify-content:space-between;align-items:center;margin-bottom:17px}.title h2 span{color:var(--red)}.chips{display:flex;gap:10px;overflow:auto;padding-bottom:8px}.chip{border:1px solid #ddd;background:#fff;padding:10px 15px;border-radius:30px;cursor:pointer;white-space:nowrap}.chip.active,.chip:hover{background:var(--red);color:#fff;border-color:var(--red)}.grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}.card{background:#fff;border-radius:14px;border:1px solid #e9e9e9;overflow:hidden;position:relative;transition:.2s}.card:hover{transform:translateY(-4px);box-shadow:0 12px 30px #0001}.badge{position:absolute;left:10px;top:10px;background:var(--red);color:#fff;padding:5px 8px;border-radius:5px;font-size:11px;font-weight:800;z-index:2}.pic{height:180px;background:linear-gradient(145deg,#f7f7f7,#ededed);display:grid;place-items:center;overflow:hidden}.pic img{width:100%;height:100%;object-fit:contain;padding:10px}.emoji{font-size:65px}.info{padding:13px}.name{font-weight:800;font-size:15px;min-height:38px}.bn{font-size:12px;color:#777;margin-top:3px;min-height:18px}.weight{font-size:12px;color:#777;margin:7px 0}.prices{display:flex;align-items:end;gap:8px;flex-wrap:wrap}.mrp{font-size:12px;color:#999;text-decoration:line-through}.save{font-size:11px;color:var(--green);font-weight:800}.price{font-size:23px;font-weight:900;color:var(--red);margin-top:3px}.add{width:100%;margin-top:10px;padding:10px;border:1px solid var(--red);background:#fff;color:var(--red);border-radius:7px;font-weight:800;cursor:pointer}.add:hover{background:var(--red);color:#fff}.empty{padding:35px;text-align:center;color:#777;grid-column:1/-1}.why{background:#0b0b0b;color:#fff;padding:40px 6%}.whygrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:22px}.whycard{background:#171717;border:1px solid #333;border-radius:12px;padding:22px}.whycard b{color:var(--gold2);display:block;margin:8px 0}.whycard p{color:#aaa;font-size:13px;line-height:1.5}.payment{background:#fff;margin:10px 6% 35px;padding:25px;border-radius:14px;border:1px solid #eee}.paygrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:15px}.pay{border:1px solid #ddd;border-radius:10px;padding:16px}.pay strong{font-size:17px}.pay small{display:block;color:#777;margin-top:5px}.orderbar{position:fixed;bottom:0;left:0;right:0;background:#090909;color:#fff;padding:10px 6%;display:flex;justify-content:space-between;align-items:center;z-index:1500;box-shadow:0 -4px 18px #0003}.orderbar button{background:var(--gold);border:0;padding:11px 18px;border-radius:7px;font-weight:900;cursor:pointer}.panel{position:fixed;right:-440px;top:0;width:420px;max-width:95%;height:100vh;background:#fff;z-index:2500;transition:.3s;padding:20px;box-shadow:-10px 0 35px #0003;overflow:auto}.panel.open{right:0}.panelHead{display:flex;justify-content:space-between;border-bottom:1px solid #ddd;padding-bottom:14px}.close{font-size:28px;cursor:pointer}.cartItem{display:grid;grid-template-columns:1fr auto;gap:10px;padding:13px 0;border-bottom:1px solid #eee}.qty{display:flex;gap:7px;align-items:center}.qty button{border:0;background:#eee;padding:5px 9px;border-radius:5px;cursor:pointer}.remove{color:var(--red);border:0;background:none;cursor:pointer}.total{font-size:21px;font-weight:900;margin-top:18px}.form{margin-top:18px}.form input,.form textarea,.form select{width:100%;padding:11px;border:1px solid #ddd;border-radius:7px;margin:6px 0 10px;outline:none}.form textarea{min-height:70px}.payHint{background:#fff8df;border:1px solid #ead28a;padding:10px;border-radius:7px;font-size:13px;display:none}.wa{width:100%;padding:13px;background:#16a34a;color:#fff;border:0;border-radius:7px;font-weight:900;cursor:pointer;margin-top:8px}footer{background:#050505;color:#aaa;padding:35px 6% 70px}footer h3{color:#fff;margin-bottom:10px}footer h3 span{color:var(--gold)}footer p{font-size:13px;line-height:1.8}.toast{position:fixed;top:85px;right:20px;background:#111;color:#fff;padding:12px 16px;border-radius:8px;z-index:4000;display:none;border-left:4px solid var(--gold)}@media(max-width:1050px){.grid{grid-template-columns:repeat(4,1fr)}.brand{min-width:210px}.whygrid{grid-template-columns:repeat(2,1fr)}}@media(max-width:800px){header{flex-wrap:wrap}.search{order:3;flex-basis:100%}.grid{grid-template-columns:repeat(3,1fr)}.heroInner{padding:38px 28px}.hero h2{font-size:34px}.paygrid{grid-template-columns:1fr}}@media(max-width:560px){.top{display:none}.brand{min-width:0}.brand h1{font-size:16px}.brand small{font-size:9px}.actions .action:first-child{display:none}.grid{grid-template-columns:repeat(2,1fr);gap:10px}.pic{height:140px}.section{padding-left:4%;padding-right:4%}.hero{margin:14px 4%}.hero h2{font-size:29px}.heroInner{padding:32px 22px}.why{padding-left:4%;padding-right:4%}.whygrid{grid-template-columns:1fr}.payment{margin-left:4%;margin-right:4%}.orderbar{padding:9px 4%}.orderbar span{font-size:13px}.panel{width:100%}}
+
+/* ===== Bengali order form improvements ===== */
+.form label{display:block;font-weight:800;margin:11px 0 6px;color:#2b1b00;font-size:14px}
+.req{color:#c4002f}
+.form input,.form textarea,.form select{width:100%;box-sizing:border-box;border:1px solid #d8c8a0;border-radius:12px;padding:12px 13px;background:#fff;font-size:14px;outline:none;transition:.2s}
+.form input:focus,.form textarea:focus,.form select:focus{border-color:#b00032;box-shadow:0 0 0 3px rgba(176,0,50,.10)}
+.form textarea{min-height:82px;resize:vertical}
+.form input.invalid,.form textarea.invalid,.form select.invalid{border:2px solid #d0002f;background:#fff7f8}
+.fieldError,.formError{display:none;color:#c4002f;background:#fff0f2;border-left:4px solid #d0002f;border-radius:7px;padding:7px 9px;margin-top:6px;font-size:13px;font-weight:700}
+.orderRules{margin:14px 0;padding:12px 13px;border:1px solid #e6c45b;border-radius:12px;background:#fff9e8;color:#4a3200;font-size:13px;line-height:1.65}
+.orderRules b{display:block;color:#9a001f;font-size:14px;margin-bottom:3px}
+.advanceBox{display:none;margin:10px 0;padding:12px;border-radius:12px;background:#fff0d5;border:1px solid #e2aa25;color:#4c3100;font-size:14px;line-height:1.6}
+.payHint{display:none;margin:8px 0;padding:10px 12px;border-radius:10px;background:#f5f5f5;color:#333;font-size:13px;line-height:1.55}
+.trxTitle{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.helpBtn{border:0;background:#111;color:#ffd33d;border-radius:999px;padding:7px 10px;font-size:12px;font-weight:800;cursor:pointer}
+.miniHelp{font-size:12px;color:#666;margin-top:6px;line-height:1.5}
+.formError{margin:12px 0}
+.modalBack{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:center;justify-content:center;z-index:9999;padding:18px}
+.modalBox{position:relative;width:min(520px,100%);background:#fff;border-radius:18px;padding:24px;box-shadow:0 25px 80px rgba(0,0,0,.4);color:#222}
+.modalBox h3{margin:0 30px 12px 0;color:#a0002b}
+.modalBox p{line-height:1.65}
+.modalClose{position:absolute;right:12px;top:10px;border:0;background:#eee;width:34px;height:34px;border-radius:50%;font-size:23px;cursor:pointer}
+.helpSteps{display:grid;gap:9px;margin:15px 0}
+.helpSteps div{background:#faf7ef;padding:10px;border-radius:10px;line-height:1.5}
+.helpNote{padding:11px;border-radius:10px;background:#fff0f2;color:#a0002b;font-size:13px;line-height:1.5}
+.closeHelp{width:100%;margin-top:14px;border:0;border-radius:11px;padding:12px;background:#b00032;color:#fff;font-weight:800;cursor:pointer}
+@media(max-width:600px){.trxTitle{align-items:flex-start;flex-direction:column}.helpBtn{align-self:flex-start}}
+</style>
+</head>
+<body>
+<div class="top"><div>🚚 Fast & Easy Grocery Delivery</div><div>WhatsApp: <b>01972840337</b></div></div>
+<header>
+  <div class="brand"><div class="brandLogo">M</div><div><h1>MAINUL'S GROCERIES</h1><small>QUALITY • TRUST • VALUE</small></div></div>
+  <div class="search"><input id="search" placeholder="Search products..." oninput="render()"><button>🔍</button></div>
+  <div class="actions"><button class="action">👤 Login</button><button class="action" onclick="openCart()">🛒 Cart <span class="count" id="count">0</span></button></div>
+</header>
+<nav><a href="#home">Home</a><a href="#products">Products</a><a href="#categories">Categories</a><a href="#offers">🔥 Offers</a><a href="#payment">Payment</a><a href="#contact">Contact</a></nav>
+<section class="hero" id="home"><div class="heroInner"><small>WELCOME TO MAINUL'S GROCERIES</small><h2>Daily Grocery. <span>Better Price.</span> Easy Order.</h2><p>Quality everyday groceries with a simple shopping experience and direct WhatsApp ordering.</p><div class="heroBtns"><button class="btn red" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">🛒 Shop Now</button><button class="btn gold" onclick="openCart()">⚡ Easy Order</button></div></div></section>
+<section class="section" id="categories"><div class="title"><h2>Shop by <span>Category</span></h2></div><div class="chips" id="chips"></div></section>
+<section class="section" id="products"><div class="title"><h2>Our <span>Products</span></h2><div id="resultCount"></div></div><div class="grid" id="grid"></div></section>
+<section class="payment" id="payment"><div class="title"><h2>💳 Easy <span>Payment</span></h2></div><div class="paygrid"><div class="pay"><strong>💗 bKash</strong><small>Personal/Merchant: <b>01717985224</b></small></div><div class="pay"><strong>🔴 Nagad</strong><small>Personal/Merchant: <b>01717985224</b></small></div><div class="pay"><strong>💵 Cash on Delivery</strong><small>Pay when your order arrives.</small></div></div></section>
+<section class="why"><div class="title"><h2>Why Choose <span style="color:var(--gold2)">MAINUL'S?</span></h2></div><div class="whygrid"><div class="whycard">🚚<b>Easy Delivery</b><p>Order from home and send your order directly to WhatsApp.</p></div><div class="whycard">💰<b>Great Value</b><p>Market price is crossed out and your selling price is highlighted.</p></div><div class="whycard">🔒<b>Simple Payment</b><p>bKash, Nagad and Cash on Delivery options.</p></div><div class="whycard">🤝<b>Trusted Service</b><p>Simple ordering with clear product information.</p></div></div></section>
+<footer id="contact"><h3>MAINUL'S <span>GROCERIES</span></h3><p>📞 WhatsApp: 01972840337</p><p>💗 bKash: 01717985224 &nbsp; 🔴 Nagad: 01717985224</p><p>© 2026 Mainul's Groceries. All Rights Reserved.</p></footer>
+<div class="orderbar"><span>🛒 <b id="barCount">0</b> items • Total ৳<b id="barTotal">0</b></span><button onclick="openCart()">⚡ EASY ORDER</button></div>
+<div class="panel" id="panel"><div class="panelHead"><h2>🛒 Your Order</h2><div class="close" onclick="closeCart()">×</div></div><div id="cart"></div><div class="total">Total: ৳<span id="total">0</span></div><div class="form">
+<h3>📝 অর্ডার দেওয়ার তথ্য</h3>
+
+<label for="customer">আপনার নাম <span class="req">*</span></label>
+<input id="customer" placeholder="আপনার পূর্ণ নাম লিখুন"><div class="fieldError" id="nameError"></div>
+
+<label for="phone">মোবাইল নম্বর <span class="req">*</span></label>
+<input id="phone" inputmode="numeric" maxlength="11" placeholder="যেমন: 017XXXXXXXX">
+<div class="fieldError" id="phoneError"></div>
+
+<label for="area">ডেলিভারি এলাকা <span class="req">*</span></label>
+<select id="area">
+<option value="">— আপনার এলাকা নির্বাচন করুন —</option>
+<option>Mirpur 1</option><option>Mirpur 2</option><option>Mirpur 6</option>
+<option>Mirpur 10</option><option>Mirpur 11</option><option>Mirpur 12</option>
+<option>Mirpur 13</option><option>Mirpur 14</option><option>Kazipara</option>
+<option>Shewrapara</option><option>Pallabi</option><option>Kalshi</option>
+<option>ECB Chattar</option><option>Uttara Sector 17</option>
+<option>Uttara Sector 18</option><option>Rupnagar</option>
+</select>
+<div class="fieldError" id="areaError"></div>
+
+<label for="address">বিস্তারিত ঠিকানা <span class="req">*</span></label>
+<textarea id="address" placeholder="বাসা/বাড়ি, রোড, ব্লক, ফ্ল্যাট/তলা ইত্যাদি লিখুন"></textarea>
+<div class="fieldError" id="addressError"></div>
+
+<div class="orderRules">
+  <b>📌 অর্ডারের নিয়ম</b>
+  <div>• সর্বনিম্ন অর্ডার মূল্য <strong>৳200</strong>। এর কম অর্ডার গ্রহণ করা হবে না।</div>
+  <div>• মোট অর্ডার <strong>৳2,000 বা তার বেশি</strong> হলে মোট মূল্যের <strong>40% অগ্রিম</strong> দিতে হবে।</div>
+</div>
+
+<label for="paymentMethod">পেমেন্ট পদ্ধতি <span class="req">*</span></label>
+<select id="paymentMethod" onchange="paymentHint()">
+<option value="Cash on Delivery">Cash on Delivery — পণ্য হাতে পেয়ে পেমেন্ট</option>
+<option value="bKash">bKash</option>
+<option value="Nagad">Nagad</option>
+</select>
+
+<div class="advanceBox" id="advanceBox"></div>
+<div class="payHint" id="hint"></div>
+
+<div class="trxRow" id="trxRow" style="display:none">
+  <div class="trxTitle">
+    <label for="trx">Transaction ID (TrxID) <span class="req">*</span></label>
+    <button type="button" class="helpBtn" onclick="showTrxHelp()">❓ Transaction ID কী?</button>
+  </div>
+  <input id="trx" placeholder="পেমেন্টের SMS/অ্যাপ থেকে TrxID লিখুন">
+  <div class="fieldError" id="trxError"></div>
+  <div class="miniHelp">পেমেন্ট করার পর যে SMS/রসিদে <b>TrxID / Transaction ID</b> লেখা থাকে, সেটিই এখানে দিন।</div>
+</div>
+
+<div class="formError" id="formError"></div>
+<button class="wa" onclick="sendWhatsApp()">📲 WhatsApp-এ অর্ডার পাঠান</button>
+</div></div>
+<div class="modalBack" id="trxModal" onclick="if(event.target===this)closeTrxHelp()">
+  <div class="modalBox">
+    <button class="modalClose" onclick="closeTrxHelp()">×</button>
+    <h3>❓ Transaction ID (TrxID) কী?</h3>
+    <p><b>Transaction ID</b> হলো আপনার bKash/Nagad পেমেন্ট সফল হওয়ার পর পাওয়া একটি আলাদা নম্বর/কোড।</p>
+    <div class="helpSteps">
+      <div><b>1.</b> bKash/Nagad-এ পেমেন্ট করুন।</div>
+      <div><b>2.</b> পেমেন্ট সফল হলে SMS বা অ্যাপের Transaction History/রসিদ দেখুন।</div>
+      <div><b>3.</b> সেখানে <b>TrxID</b> বা <b>Transaction ID</b> লেখা যে নম্বর/কোডটি আছে, সেটি কপি করুন।</div>
+      <div><b>4.</b> অর্ডার ফর্মের Transaction ID ঘরে সেটি লিখুন।</div>
+    </div>
+    <div class="helpNote">⚠️ আপনার PIN, OTP বা bKash/Nagad password কখনোই এখানে দেবেন না। শুধু Transaction ID দিন।</div>
+    <button class="closeHelp" onclick="closeTrxHelp()">বুঝেছি</button>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+<!-- =========================================================
+     PRODUCTS DATA - EDIT PRODUCTS HERE
+     All product data is inside this one HTML file.
+     ========================================================= -->
+<script>
+const products = [
+  {
+    "name": "Rashid Miniket Rice",
+    "bn": "রশিদ মিনিকেট চাল",
+    "category": "চাল,ডাল",
+    "weight": "5 kg",
+    "marketPrice": 520,
+    "sellingPrice": 620,
+    "image": "images/dano pusti.jpg.jpeg"
+  },
+  {
+    "name": "Rashid Miniket Rice",
+    "bn": "রশিদ মিনিকেট চাল",
+    "category": "চাল,ডাল",
+    "weight": "25 kg",
+    "marketPrice": 2100,
+    "sellingPrice": 2100,
+     "image": "dano pusti.jpg"
+  },
+  {
+    "name": "Rashid Miniket Rice",
+    "bn": "রশিদ মিনিকেট চাল",
+    "category": "চাল,ডাল",
+    "weight": "50 kg",
+    "marketPrice": 4200,
+    "sellingPrice": 4200,
+     "image": "dano pusti.jpg"
+  },
+  {
+    "name": "Nazirshail Miniket Rice",
+    "bn": "নাজিরশাইল মিনিকেট চাল",
+    "category": "চাল,ডাল",
+    "weight": "5 kg",
+    "marketPrice": 480,
+    "sellingPrice": 480,
+    "image": "images/product-004.jpg"
+  },
+  {
+    "name": "Nazirshail Miniket Rice",
+    "bn": "নাজিরশাইল মিনিকেট চাল",
+    "category": "চাল,ডাল",
+    "weight": "25 kg",
+    "marketPrice": 2400,
+    "sellingPrice": 2400,
+    "image": "images/product-005.jpg"
+  },
+  {
+    "name": "Nazirshail Miniket Rice",
+    "bn": "নাজিরশাইল মিনিকেট চাল",
+    "category": "চাল,ডাল",
+    "weight": "50 kg",
+    "marketPrice": 4200,
+    "sellingPrice": 4200,
+    "image": "images/product-006.jpg"
+  },
+  {
+    "name": "Poloa Chinigura Rice",
+    "bn": "পোলাও চিনিগুড়া চাল",
+    "category": "চাল,ডাল",
+    "weight": "1 kg",
+    "marketPrice": 220,
+    "sellingPrice": 220,
+    "image": "images/product-007.jpg"
+  },
+  {
+    "name": "Poloa Chinigura Rice",
+    "bn": "পোলাও চিনিগুড়া চাল",
+    "category": "চাল,ডাল",
+    "weight": "5 kg",
+    "marketPrice": 1030,
+    "sellingPrice": 1030,
+    "image": "images/product-008.jpg"
+  },
+  {
+    "name": "Basmati Rice",
+    "bn": "বাসমতি চাল",
+    "category": "চাল,ডাল",
+    "weight": "1 kg",
+    "marketPrice": 220,
+    "sellingPrice": 220,
+    "image": "images/product-009.jpg"
+  },
+  {
+    "name": "BR-28 Rice",
+    "bn": "বিআর-২৮ চাল",
+    "category": "চাল,ডাল",
+    "weight": "5 kg",
+    "marketPrice": 360,
+    "sellingPrice": 360,
+    "image": "images/product-010.jpg"
+  },
+  {
+    "name": "BR-28 Rice",
+    "bn": "বিআর-২৮ চাল",
+    "category": "চাল,ডাল",
+    "weight": "25 kg",
+    "marketPrice": 1700,
+    "sellingPrice": 1700,
+    "image": "images/product-011.jpg"
+  },
+  {
+    "name": "BR-28 Rice",
+    "bn": "বিআর-২৮ চাল",
+    "category": "চাল,ডাল",
+    "weight": "50 kg",
+    "marketPrice": 3300,
+    "sellingPrice": 3300,
+    "image": "images/product-012.jpg"
+  },
+  {
+    "name": "Masoor Dal",
+    "bn": "মসুর ডাল",
+    "category": "চাল,ডাল",
+    "weight": "1 kg",
+    "marketPrice": 162,
+    "sellingPrice": 162,
+    "image": "images/product-013.jpg"
+  },
+  {
+    "name": "Mug Dal",
+    "bn": "মুগ ডাল",
+    "category": "চাল,ডাল",
+    "weight": "1 kg",
+    "marketPrice": 200,
+    "sellingPrice": 200,
+    "image": "images/product-014.jpg"
+  },
+  {
+    "name": "Boot Dal",
+    "bn": "বুট ডাল",
+    "category": "চাল,ডাল",
+    "weight": "1 kg",
+    "marketPrice": 145,
+    "sellingPrice": 145,
+    "image": "images/product-015.jpg"
+  },
+  {
+    "name": "Anchor Dal",
+    "bn": "এংকর ডাল",
+    "category": "চাল,ডাল",
+    "weight": "1 kg",
+    "marketPrice": 150,
+    "sellingPrice": 150,
+    "image": "images/product-016.jpg"
+  },
+  {
+    "name": "Sugar",
+    "bn": "চিনি",
+    "category": "মসলা",
+    "weight": "1 kg",
+    "marketPrice": 145,
+    "sellingPrice": 145,
+    "image": "images/product-017.jpg"
+  },
+  {
+    "name": "Salt (White)",
+    "bn": "লবণ",
+    "category": "মসলা",
+    "weight": "1 kg",
+    "marketPrice": 42,
+    "sellingPrice": 42,
+    "image": "images/product-018.jpg"
+  },
+  {
+    "name": "Salt (Dolfun)",
+    "bn": "লবণ (dolfin)",
+    "category": "মসলা",
+    "weight": "1 kg",
+    "marketPrice": 85,
+    "sellingPrice": 85,
+    "image": "images/product-019.jpg"
+  },
+  {
+    "name": "Atta",
+    "bn": "আটা",
+    "category": "চাল",
+    "weight": "2 kg",
+    "marketPrice": 170,
+    "sellingPrice": 170,
+    "image": "images/product-020.jpg"
+  },
+  {
+    "name": "Maida",
+    "bn": "ময়দা",
+    "category": "চাল",
+    "weight": "2 kg",
+    "marketPrice": 170,
+    "sellingPrice": 170,
+    "image": "images/product-021.jpg"
+  },
+  {
+    "name": "Paan Milk",
+    "bn": "পান মিল্ক",
+    "category": "ডিম ও দুধ",
+    "weight": "1 litre",
+    "marketPrice": 115,
+    "sellingPrice": 115,
+    "image": "images/product-022.jpg"
+  },
+  {
+    "name": "Egg",
+    "bn": "ডিম",
+    "category": "ডিম ও দুধ",
+    "weight": "12 pcs",
+    "marketPrice": 170,
+    "sellingPrice": 170,
+    "image": "images/product-023.jpg"
+  },
+  {
+    "name": "Garlic (Indian)",
+    "bn": "রসুন (ইন্ডিয়ান)",
+    "category": "সবজি/ফল",
+    "weight": "1/2 kg",
+    "marketPrice": 130,
+    "sellingPrice": 130,
+    "image": "images/product-024.jpg"
+  },
+  {
+    "name": "Garlic (Deshi)",
+    "bn": "রসুন (দেশি)",
+    "category": "সবজি/ফল",
+    "weight": "1/2 kg",
+    "marketPrice": 165,
+    "sellingPrice": 165,
+    "image": "images/product-025.jpg"
+  },
+  {
+    "name": "Ginger (Bengal)",
+    "bn": "আদা (দেশি)",
+    "category": "সবজি/ফল",
+    "weight": "1/2 kg",
+    "marketPrice": 145,
+    "sellingPrice": 145,
+    "image": "images/product-026.jpg"
+  },
+  {
+    "name": "Ginger (Indian)",
+    "bn": "আদা (ইন্ডিয়ান)",
+    "category": "সবজি/ফল",
+    "weight": "1/2 kg",
+    "marketPrice": 130,
+    "sellingPrice": 130,
+    "image": "images/product-027.jpg"
+  },
+  {
+    "name": "Potato (Deshi)",
+    "bn": "আলু ",
+    "category": "সবজি/ফল",
+    "weight": "2 kg",
+    "marketPrice": 95,
+    "sellingPrice": 95,
+    "image": "images/product-028.jpg"
+  },
+  {
+    "name": "Potato (Indian)",
+    "bn": "আলু (red)",
+    "category": "সবজি/ফল",
+    "weight": "2 kg",
+    "marketPrice": 110,
+    "sellingPrice": 110,
+    "image": "images/product-029.jpg"
+  },
+  {
+    "name": "Onion",
+    "bn": "পেঁয়াজ",
+    "category": "সবজি/ফল",
+    "weight": "1 kg",
+    "marketPrice": 120,
+    "sellingPrice": 120,
+    "image": "images/product-030.jpg"
+  },
+  {
+    "name": "Turmeric Powder",
+    "bn": "হলুদ গুঁড়া",
+    "category": "মসলা (loos)",
+    "weight": "250 g",
+    "marketPrice": 90,
+    "sellingPrice": 90,
+    "image": "images/product-031.jpg"
+  },
+  {
+    "name": "Chili Powder",
+    "bn": "মরিচ গুঁড়া",
+    "category": "মসলা (loos)",
+    "weight": "250 g",
+    "marketPrice": 115,
+    "sellingPrice": 115,
+    "image": "images/product-032.jpg"
+  },
+  {
+    "name": "Coriander Powder",
+    "bn": "ধনিয়া গুঁড়া",
+    "category": "মসলা (loos)",
+    "weight": "250 g",
+    "marketPrice": 85,
+    "sellingPrice": 85,
+    "image": "images/product-033.jpg"
+  },
+  {
+    "name": "Cumin Powder",
+    "bn": "জিরা গুঁড়া",
+    "category": "মসলা (loos)",
+    "weight": "250 g",
+    "marketPrice": 150,
+    "sellingPrice": 150,
+    "image": "images/product-034.jpg"
+  },
+  {
+    "name": "Vinegar",
+    "bn": "ভিনেগার",
+    "category": "মসলা (loos)",
+    "weight": "650 g",
+    "marketPrice": 120,
+    "sellingPrice": 120,
+    "image": "images/product-035.jpg"
+  },
+  {
+    "name": "Baking Salt",
+    "bn": "বেকিং সল্ট",
+    "category": "মসলা (loos)",
+    "weight": "200 g",
+    "marketPrice": 55,
+    "sellingPrice": 55,
+    "image": "images/product-036.jpg"
+  },
+  {
+    "name": "Cashew Nuts",
+    "bn": "কাজু বাদাম",
+    "category": "মসলা (loos)",
+    "weight": "100 g",
+    "marketPrice": 195,
+    "sellingPrice": 195,
+    "image": "images/product-037.jpg"
+  },
+  {
+    "name": "Raisin",
+    "bn": "কিশমিশ",
+    "category": "মসলা (loos)",
+    "weight": "100 g",
+    "marketPrice": 105,
+    "sellingPrice": 105,
+    "image": "images/product-038.jpg"
+  },
+  {
+    "name": "Pistachio Nuts",
+    "bn": "পেস্তা বাদাম",
+    "category": "মসলা (loos)",
+    "weight": "100 g",
+    "marketPrice": 260,
+    "sellingPrice": 260,
+    "image": "images/product-039.jpg"
+  },
+  {
+    "name": "Almond Nuts",
+    "bn": "কাঠবাদাম",
+    "category": "মসলা (loos)",
+    "weight": "100 g",
+    "marketPrice": 210,
+    "sellingPrice": 210,
+    "image": "images/product-040.jpg"
+  },
+  {
+    "name": "Cinnamon",
+    "bn": "দারুচিনি",
+    "category": "মসলা (loos)",
+    "weight": "100 g",
+    "marketPrice": 115,
+    "sellingPrice": 115,
+    "image": "images/product-041.jpg"
+  },
+  {
+    "name": "Cardamom",
+    "bn": "এলাচ",
+    "category": "মসলা (loos)",
+    "weight": "50 g",
+    "marketPrice": 190,
+    "sellingPrice": 190,
+    "image": "images/product-042.jpg"
+  },
+  {
+    "name": "Cloves",
+    "bn": "লবঙ্গ",
+    "category": "মসলা (loos)",
+    "weight": "30 g",
+    "marketPrice": 95,
+    "sellingPrice": 95,
+    "image": "images/product-043.jpg"
+  },
+  {
+    "name": "Black Pepper",
+    "bn": "গোলমরিচ",
+    "category": "মসলা (loos)",
+    "weight": "50 g",
+    "marketPrice": 130,
+    "sellingPrice": 130,
+    "image": "images/product-044.jpg"
+  },
+  {
+    "name": "White Pepper",
+    "bn": "সাদা গোলমরিচ",
+    "category": "মসলা (loos)",
+    "weight": "50 g",
+    "marketPrice": 150,
+    "sellingPrice": 150,
+    "image": "images/product-045.jpg"
+  },
+  {
+    "name": "Condensed Milk",
+    "bn": "কনডেন্সড মিল্ক",
+    "category": "ডিম ও দুধ",
+    "weight": "400 g",
+    "marketPrice": 110,
+    "sellingPrice": 110,
+    "image": "images/product-046.jpg"
+  },
+  {
+    "name": "Soybean Oil",
+    "bn": "সয়াবিন তেল",
+    "category": "তেল",
+    "weight": "1 kg",
+    "marketPrice": 204,
+    "sellingPrice": 204,
+    "image": "images/product-047.jpg"
+  },
+  {
+    "name": "Tooth Brush",
+    "bn": "টুথব্রাশ",
+    "category": "টুথপেস্ট",
+    "weight": "1 pc",
+    "marketPrice": 75,
+    "sellingPrice": 75,
+    "image": "images/product-048.jpg"
+  },
+  {
+    "name": "Harpic Liquid",
+    "bn": "হারপিক লিকুইড",
+    "category": "ক্লিনিং",
+    "weight": "1 pc",
+    "marketPrice": 150,
+    "sellingPrice": 150,
+    "image": "images/product-049.jpg"
+  },
+  {
+    "name": "Chaka Ball Soap",
+    "bn": "চাকা বল সাবান",
+    "category": "সাবান",
+    "weight": "2 pcs",
+    "marketPrice": 55,
+    "sellingPrice": 55,
+    "image": "images/product-050.jpg"
+  },
+  {
+    "name": "Parachute Oil",
+    "bn": "প্যারাসুট তেল",
+    "category": "তেল",
+    "weight": "1 pc",
+    "marketPrice": 210,
+    "sellingPrice": 210,
+    "image": "images/product-051.jpg"
+  },
+  {
+    "name": "Parachute Oil",
+    "bn": "প্যারাসুট তেল",
+    "category": "তেল",
+    "weight": "1 pc",
+    "marketPrice": 130,
+    "sellingPrice": 130,
+    "image": "images/product-052.jpg"
+  },
+  {
+    "name": "Parachute Oil",
+    "bn": "প্যারাসুট তেল",
+    "category": "তেল",
+    "weight": "1 pc",
+    "marketPrice": 85,
+    "sellingPrice": 85,
+    "image": "images/product-053.jpg"
+  },
+  {
+    "name": "Parachute Oil",
+    "bn": "প্যারাসুট তেল",
+    "category": "তেল",
+    "weight": "1 pc",
+    "marketPrice": 60,
+    "sellingPrice": 60,
+    "image": "images/product-054.jpg"
+  },
+  {
+    "name": "Parachute Oil",
+    "bn": "প্যারাসুট তেল",
+    "category": "তেল",
+    "weight": "1 pc",
+    "marketPrice": 45,
+    "sellingPrice": 45,
+    "image": "images/product-055.jpg"
+  },
+  {
+    "name": "Parachute Oil",
+    "bn": "প্যারাসুট তেল",
+    "category": "তেল",
+    "weight": "1 pc",
+    "marketPrice": 35,
+    "sellingPrice": 35,
+    "image": "images/product-056.jpg"
+  },
+  {
+    "name": "Fair & Lovely",
+    "bn": "ফেয়ার অ্যান্ড লাভলি",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "1 pc",
+    "marketPrice": 210,
+    "sellingPrice": 210,
+    "image": "images/product-057.jpg"
+  },
+  {
+    "name": "Fair & Lovely",
+    "bn": "ফেয়ার অ্যান্ড লাভলি",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "1 pc",
+    "marketPrice": 145,
+    "sellingPrice": 145,
+    "image": "images/product-058.jpg"
+  },
+  {
+    "name": "Fair & Lovely",
+    "bn": "ফেয়ার অ্যান্ড লাভলি",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "1 pc",
+    "marketPrice": 85,
+    "sellingPrice": 85,
+    "image": "images/product-059.jpg"
+  },
+  {
+    "name": "Hair Colour",
+    "bn": "হেয়ার কালার",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "1 pc",
+    "marketPrice": 110,
+    "sellingPrice": 110,
+    "image": "images/product-060.jpg"
+  },
+  {
+    "name": "Cucumber",
+    "bn": "শসা",
+    "category": "সবজি/ফল",
+    "weight": "1 kg",
+    "marketPrice": 100,
+    "sellingPrice": 100,
+    "image": "images/product-061.jpg"
+  },
+  {
+    "name": "Carrot",
+    "bn": "গাজর",
+    "category": "সবজি/ফল",
+    "weight": "1 kg",
+    "marketPrice": 110,
+    "sellingPrice": 110,
+    "image": "images/product-062.jpg"
+  },
+  {
+    "name": "Tomato",
+    "bn": "টমেটো",
+    "category": "সবজি/ফল",
+    "weight": "1 kg",
+    "marketPrice": 110,
+    "sellingPrice": 110,
+    "image": "images/product-063.jpg"
+  },
+  {
+    "name": "Biscuit / Chanachur",
+    "bn": "বিস্কুট / চানাচুর",
+    "category": "বিস্কুট/স্ন্যাকস",
+    "weight": "1 pack",
+    "marketPrice": 65,
+    "sellingPrice": 65,
+    "image": "images/product-064.jpg"
+  },
+  {
+    "name": "Chocolate",
+    "bn": "চকলেট",
+    "category": "বিস্কুট/স্ন্যাকস",
+    "weight": "1 pack",
+    "marketPrice": 100,
+    "sellingPrice": 100,
+    "image": "images/product-065.jpg"
+  },
+  {
+    "name": "DANO Pushti",
+    "bn": "ডানো পুষ্টি",
+    "category": "ডিম ও দুধ",
+    "weight": "500g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-066.jpg"
+  },
+  {
+    "name": "DANO Pushti",
+    "bn": "ডানো পুষ্টি",
+    "category": "ডিম ও দুধ",
+    "weight": "1kg",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-067.jpg"
+  },
+  {
+    "name": "DANO Pushti",
+    "bn": "ডানো পুষ্টি",
+    "category": "ডিম ও দুধ",
+    "weight": "2kg",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-068.jpg"
+  },
+  {
+    "name": "DANO Pushti",
+    "bn": "ডানো পুষ্টি",
+    "category": "ডিম ও দুধ",
+    "weight": "250g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-069.jpg"
+  },
+  {
+    "name": "DANO Power",
+    "bn": "ডানো পাওয়ার",
+    "category": "ডিম ও দুধ",
+    "weight": "500g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-070.jpg"
+  },
+  {
+    "name": "DANO Power",
+    "bn": "ডানো পাওয়ার",
+    "category": "ডিম ও দুধ",
+    "weight": "1kg",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-071.jpg"
+  },
+  {
+    "name": "DANO Power",
+    "bn": "ডানো পাওয়ার",
+    "category": "ডিম ও দুধ",
+    "weight": "2kg",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-072.jpg"
+  },
+  {
+    "name": "DANO Power",
+    "bn": "ডানো পাওয়ার",
+    "category": "ডিম ও দুধ",
+    "weight": "250g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-073.jpg"
+  },
+  {
+    "name": "DANO Growth",
+    "bn": "ডানো গ্রোথ",
+    "category": "ডিম ও দুধ",
+    "weight": "400g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-074.jpg"
+  },
+  {
+    "name": "Green Capsicum",
+    "bn": "সবুজ ক্যাপসিকাম",
+    "category": "সবজি/ফল",
+    "weight": "500g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-075.jpg"
+  },
+  {
+    "name": "Yellow Capsicum",
+    "bn": "হলুদ ক্যাপসিকাম",
+    "category": "সবজি/ফল",
+    "weight": "500g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-076.jpg"
+  },
+  {
+    "name": "Red Capsicum",
+    "bn": "লাল ক্যাপসিকাম",
+    "category": "সবজি/ফল",
+    "weight": "500g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-077.jpg"
+  },
+  {
+    "name": "Pepsodent Toothpaste",
+    "bn": "পেপসোডেন্ট টুথপেস্ট",
+    "category": " সাবান/টুথপেস্ট",
+    "weight": "50g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-078.jpg"
+  },
+  {
+    "name": "Pepsodent Toothpaste",
+    "bn": "পেপসোডেন্ট টুথপেস্ট",
+    "category": " সাবান/টুথপেস্ট",
+    "weight": "100g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-079.jpg"
+  },
+  {
+    "name": "Pepsodent Toothpaste",
+    "bn": "পেপসোডেন্ট টুথপেস্ট",
+    "category": " সাবান/টুথপেস্ট",
+    "weight": "150g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-080.jpg"
+  },
+  {
+    "name": "Pepsodent Tooth Powder",
+    "bn": "পেপসোডেন্ট টুথ পাউডার",
+    "category": " সাবান/টুথপেস্ট",
+    "weight": "50g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-081.jpg"
+  },
+  {
+    "name": "Closeup Toothpaste",
+    "bn": "ক্লোজআপ টুথপেস্ট",
+    "category": " সাবান/টুথপেস্ট",
+    "weight": "50g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-082.jpg"
+  },
+  {
+    "name": "Closeup Toothpaste",
+    "bn": "ক্লোজআপ টুথপেস্ট",
+    "category": " সাবান/টুথপেস্ট",
+    "weight": "100g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-083.jpg"
+  },
+  {
+    "name": "Closeup Toothpaste",
+    "bn": "ক্লোজআপ টুথপেস্ট",
+    "category": " সাবান/টুথপেস্ট",
+    "weight": "150g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-084.jpg"
+  },
+  {
+    "name": "Colgate Toothpaste",
+    "bn": "কলগেট টুথপেস্ট",
+    "category": " সাবান/টুথপেস্ট",
+    "weight": "50g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-085.jpg"
+  },
+  {
+    "name": "Colgate Toothpaste",
+    "bn": "কলগেট টুথপেস্ট",
+    "category": " সাবান/টুথপেস্ট",
+    "weight": "100g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-086.jpg"
+  },
+  {
+    "name": "Sensodyne Toothpaste",
+    "bn": "সেনসোডাইন টুথপেস্ট",
+    "category": " সাবান/টুথপেস্ট",
+    "weight": "70g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-087.jpg"
+  },
+  {
+    "name": "Sensodyne Toothpaste",
+    "bn": "সেনসোডাইন টুথপেস্ট",
+    "category": " সাবান/টুথপেস্ট",
+    "weight": "70g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-088.jpg"
+  },
+  {
+    "name": "Radhuni Turmeric Powder",
+    "bn": "রাধুনী হলুদ গুঁড়া",
+    "category": "মসলা",
+    "weight": "1kg",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-089.jpg"
+  },
+  {
+    "name": "Radhuni Turmeric Powder",
+    "bn": "রাধুনী হলুদ গুঁড়া",
+    "category": "মসলা",
+    "weight": "500g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-090.jpg"
+  },
+  {
+    "name": "Radhuni Turmeric Powder",
+    "bn": "রাধুনী হলুদ গুঁড়া",
+    "category": "মসলা",
+    "weight": "100g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-091.jpg"
+  },
+  {
+    "name": "Radhuni Turmeric Powder",
+    "bn": "রাধুনী হলুদ গুঁড়া",
+    "category": "মসলা",
+    "weight": "200g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-092.jpg"
+  },
+  {
+    "name": "Radhuni Turmeric Powder",
+    "bn": "রাধুনী হলুদ গুঁড়া",
+    "category": "মসলা",
+    "weight": "50g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-093.jpg"
+  },
+  {
+    "name": "Radhuni Chilli Powder",
+    "bn": "রাধুনী মরিচ গুঁড়া",
+    "category": "মসলা",
+    "weight": "50g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-094.jpg"
+  },
+  {
+    "name": "Radhuni Chilli Powder",
+    "bn": "রাধুনী মরিচ গুঁড়া",
+    "category": "মসলা",
+    "weight": "100g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-095.jpg"
+  },
+  {
+    "name": "Radhuni Chilli Powder",
+    "bn": "রাধুনী মরিচ গুঁড়া",
+    "category": "মসলা",
+    "weight": "200g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-096.jpg"
+  },
+  {
+    "name": "Radhuni Chilli Powder",
+    "bn": "রাধুনী মরিচ গুঁড়া",
+    "category": "মসলা",
+    "weight": "500g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-097.jpg"
+  },
+  {
+    "name": "Radhuni Chilli Powder",
+    "bn": "রাধুনী মরিচ গুঁড়া",
+    "category": "মসলা",
+    "weight": "1kg",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-098.jpg"
+  },
+  {
+    "name": "Radhuni Coriander Powder",
+    "bn": "রাধুনী ধনিয়া গুঁড়া",
+    "category": "মসলা",
+    "weight": "50g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-099.jpg"
+  },
+  {
+    "name": "Radhuni Coriander Powder",
+    "bn": "রাধুনী ধনিয়া গুঁড়া",
+    "category": "মসলা",
+    "weight": "100g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-100.jpg"
+  },
+  {
+    "name": "Radhuni Coriander Powder",
+    "bn": "রাধুনী ধনিয়া গুঁড়া",
+    "category": "মসলা",
+    "weight": "200g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-101.jpg"
+  },
+  {
+    "name": "Radhuni Cumin Powder",
+    "bn": "রাধুনী জিরা গুঁড়া",
+    "category": "মসলা",
+    "weight": "15g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-102.jpg"
+  },
+  {
+    "name": "Radhuni Cumin Powder",
+    "bn": "রাধুনী জিরা গুঁড়া",
+    "category": "মসলা",
+    "weight": "50g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-103.jpg"
+  },
+  {
+    "name": "Radhuni Cumin Powder",
+    "bn": "রাধুনী জিরা গুঁড়া",
+    "category": "মসলা",
+    "weight": "100g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-104.jpg"
+  },
+  {
+    "name": "Radhuni Garam Masala",
+    "bn": "রাধুনী গরম মসলা",
+    "category": "মসলা",
+    "weight": "15g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-105.jpg"
+  },
+  {
+    "name": "Radhuni Garam Masala",
+    "bn": "রাধুনী গরম মসলা",
+    "category": "মসলা",
+    "weight": "40g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-106.jpg"
+  },
+  {
+    "name": "Radhuni Chicken Masala",
+    "bn": "রাধুনী চিকেন মসলা",
+    "category": "মসলা",
+    "weight": "20g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-107.jpg"
+  },
+  {
+    "name": "Radhuni Chicken Masala",
+    "bn": "রাধুনী চিকেন মসলা",
+    "category": "মসলা",
+    "weight": "100g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-108.jpg"
+  },
+  {
+    "name": "Radhuni Beef Masala",
+    "bn": "রাধুনী বিফ মসলা",
+    "category": "মসলা",
+    "weight": "25g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-109.jpg"
+  },
+  {
+    "name": "Radhuni Beef Masala",
+    "bn": "রাধুনী বিফ মসলা",
+    "category": "মসলা",
+    "weight": "100g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-110.jpg"
+  },
+  {
+    "name": "Radhuni Fish Curry Masala",
+    "bn": "রাধুনী ফিশ কারি মসলা",
+    "category": "মসলা",
+    "weight": "20g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-111.jpg"
+  },
+  {
+    "name": "Radhuni Fish Curry Masala",
+    "bn": "রাধুনী ফিশ কারি মসলা",
+    "category": "মসলা",
+    "weight": "100g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-112.jpg"
+  },
+  {
+    "name": "Radhuni Biryani Masala",
+    "bn": "রাধুনী বিরিয়ানি মসলা",
+    "category": "মসলা",
+    "weight": "40g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-113.jpg"
+  },
+  {
+    "name": "Radhuni Roast Masala",
+    "bn": "রাধুনী রোস্ট মসলা",
+    "category": "মসলা",
+    "weight": "35g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-114.jpg"
+  },
+  {
+    "name": "Radhuni Tehari Masala",
+    "bn": "রাধুনী তেহারি মসলা",
+    "category": "মসলা",
+    "weight": "40g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-115.jpg"
+  },
+  {
+    "name": "Radhuni Mejbani Beef Masala",
+    "bn": "রাধুনী মেজবানি বিফ মসলা",
+    "category": "মসলা",
+    "weight": "68g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-116.jpg"
+  },
+  {
+    "name": "Radhuni Chicken Tandoori Masala",
+    "bn": "রাধুনী চিকেন তান্দুরি মসলা",
+    "category": "মসলা",
+    "weight": "50g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-117.jpg"
+  },
+  {
+    "name": "Radhuni Borhani Masala",
+    "bn": "রাধুনী বোরহানি মসলা",
+    "category": "মসলা",
+    "weight": "50g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-118.jpg"
+  },
+  {
+    "name": "Radhuni Chatpati Masala",
+    "bn": "রাধুনী চটপটি মসলা",
+    "category": "মসলা",
+    "weight": "50g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-119.jpg"
+  },
+  {
+    "name": "Radhuni Chilli Flakes",
+    "bn": "রাধুনী চিলি ফ্লেক্স",
+    "category": "মসলা",
+    "weight": "40g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-120.jpg"
+  },
+  {
+    "name": "Radhuni Easy Mix Roast Masala",
+    "bn": "রাধুনী ইজি মিক্স রোস্ট মসলা",
+    "category": "মসলা",
+    "weight": "35g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-121.jpg"
+  },
+  {
+    "name": "Radhuni Kabab Masala",
+    "bn": "রাধুনী কাবাব মসলা",
+    "category": "মসলা",
+    "weight": "50g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-122.jpg"
+  },
+  {
+    "name": "Radhuni Garam Masala",
+    "bn": "রাধুনী গরম মসলা",
+    "category": "মসলা",
+    "weight": "40g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-123.jpg"
+  },
+  {
+    "name": "Radhuni Meat Masala",
+    "bn": "রাধুনী মিট মসলা",
+    "category": "মসলা",
+    "weight": "100g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-124.jpg"
+  },
+  {
+    "name": "Radhuni Kacchi Biryani Masala",
+    "bn": "রাধুনী কাচ্চি বিরিয়ানি মসলা",
+    "category": "মসলা",
+    "weight": "40g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-125.jpg"
+  },
+  {
+    "name": "Radhuni Chaat Masala",
+    "bn": "রাধুনী চাট মসলা",
+    "category": "মসলা",
+    "weight": "50g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-126.jpg"
+  },
+  {
+    "name": "Lifebuoy  Soap",
+    "bn": "লাইফবয় সাবান",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "100g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-127.jpg"
+  },
+  {
+    "name": "Lifebuoy  Soap",
+    "bn": "লাইফবয় সাবান",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "100g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-128.jpg"
+  },
+  {
+    "name": "Lifebuoy  Soap",
+    "bn": "লাইফবয় সাবান",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "100g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-129.jpg"
+  },
+  {
+    "name": "Lifebuoy  Soap",
+    "bn": "লাইফবয় সাবান",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "100g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-130.jpg"
+  },
+  {
+    "name": "Lifebuoy  Soap",
+    "bn": "লাইফবয় সাবান",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "100g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-131.jpg"
+  },
+  {
+    "name": "Lifebuoy  Soap",
+    "bn": "লাইফবয় সাবান",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "100g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-132.jpg"
+  },
+  {
+    "name": "Lifebuoy Care Soap",
+    "bn": "লাইফবয় কেয়ার সাবান",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "100g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-133.jpg"
+  },
+  {
+    "name": "Lux Soap",
+    "bn": "লাক্স  সাবান",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "100g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-134.jpg"
+  },
+  {
+    "name": "Lux Soap",
+    "bn": "লাক্স  সাবান",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "100g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-135.jpg"
+  },
+  {
+    "name": "Lux Soap",
+    "bn": "লাক্স  সাবান",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "100g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-136.jpg"
+  },
+  {
+    "name": "Lux Soap",
+    "bn": "লাক্স  সাবান",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "100g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-137.jpg"
+  },
+  {
+    "name": "Dove Beauty Bar",
+    "bn": "ডাভ বিউটি বার",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "100g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-138.jpg"
+  },
+  {
+    "name": "Lifebuoy Lemon Fresh Handwash",
+    "bn": "লাইফবয় লেমন ফ্রেশ হ্যান্ডওয়াশ",
+    "category": "হ্যান্ডওয়াশ",
+    "weight": "200ml",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-139.jpg"
+  },
+  {
+    "name": "Lifebuoy Fresh Handwash",
+    "bn": "লাইফবয় ফ্রেশ হ্যান্ডওয়াশ",
+    "category": "হ্যান্ডওয়াশ",
+    "weight": "200ml",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-140.jpg"
+  },
+  {
+    "name": "Lifebuoy Handwash Refill",
+    "bn": "লাইফবয় হ্যান্ডওয়াশ রিফিল",
+    "category": "হ্যান্ডওয়াশ",
+    "weight": "170ml",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-141.jpg"
+  },
+  {
+    "name": "Sunsilk Black Shine Shampoo",
+    "bn": "সানসিল্ক ব্ল্যাক শাইন শ্যাম্পু",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "180ml",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-142.jpg"
+  },
+  {
+    "name": "Sunsilk Black Shine Shampoo",
+    "bn": "সানসিল্ক ব্ল্যাক শাইন শ্যাম্পু",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "180ml",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-143.jpg"
+  },
+  {
+    "name": "Sunsilk Hairfall Solution Shampoo",
+    "bn": "সানসিল্ক হেয়ারফল সলিউশন শ্যাম্পু",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "180ml",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-144.jpg"
+  },
+  {
+    "name": "Sunsilk Hairfall Solution Shampoo",
+    "bn": "সানসিল্ক হেয়ারফল সলিউশন শ্যাম্পু",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "180ml",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-145.jpg"
+  },
+  {
+    "name": "Sunsilk Soft & Smooth Shampoo",
+    "bn": "সানসিল্ক সফট অ্যান্ড স্মুথ শ্যাম্পু",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "180ml",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-146.jpg"
+  },
+  {
+    "name": "Sunsilk Soft & Smooth Shampoo",
+    "bn": "সানসিল্ক সফট অ্যান্ড স্মুথ শ্যাম্পু",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "180ml",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-147.jpg"
+  },
+  {
+    "name": "Clear Men Cool Sport Menthol Shampoo",
+    "bn": "ক্লিয়ার মেন কুল স্পোর্ট মেন্থল শ্যাম্পু",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "180ml",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-148.jpg"
+  },
+  {
+    "name": "Clear Anti-Dandruff Shampoo",
+    "bn": "ক্লিয়ার অ্যান্টি-ড্যানড্রাফ শ্যাম্পু",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "180ml",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-149.jpg"
+  },
+  {
+    "name": "Vaseline Intensive Care Lotion",
+    "bn": "ভ্যাসলিন ইনটেনসিভ কেয়ার লোশন",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "100ml",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-150.jpg"
+  },
+  {
+    "name": "Vaseline Healthy Bright Lotion",
+    "bn": "ভ্যাসলিন হেলদি ব্রাইট লোশন",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "100ml",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-151.jpg"
+  },
+  {
+    "name": "Vaseline Aloe Fresh Lotion",
+    "bn": "ভ্যাসলিন অ্যালোভেরা ফ্রেশ লোশন",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "100ml",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-152.jpg"
+  },
+  {
+    "name": "Vim Dishwashing Liquid",
+    "bn": "ভিম ডিশওয়াশিং লিকুইড",
+    "category": "ডিশওয়াশ",
+    "weight": "250ml",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-153.jpg"
+  },
+  {
+    "name": "Vim Dishwashing Liquid",
+    "bn": "ভিম ডিশওয়াশিং লিকুইড",
+    "category": "ডিশওয়াশ",
+    "weight": "500ml",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-154.jpg"
+  },
+  {
+    "name": "Vim Dishwashing Bar",
+    "bn": "ভিম ডিশওয়াশিং বার",
+    "category": "ডিশওয়াশ",
+    "weight": "300g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-155.jpg"
+  },
+  {
+    "name": "Wheel Washing Powder",
+    "bn": "হুইল ওয়াশিং পাউডার",
+    "category": "ডিটারজেন্ট পাউডার",
+    "weight": "500g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-156.jpg"
+  },
+  {
+    "name": "Wheel Washing Powder",
+    "bn": "হুইল ওয়াশিং পাউডার",
+    "category": "ডিটারজেন্ট পাউডার",
+    "weight": "1kg",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-157.jpg"
+  },
+  {
+    "name": "Wheel Washing Powder",
+    "bn": "হুইল ওয়াশিং পাউডার",
+    "category": "ডিটারজেন্ট পাউডার",
+    "weight": "1kg",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-158.jpg"
+  },
+  {
+    "name": "Rin Detergent Powder",
+    "bn": "রিন ডিটারজেন্ট পাউডার",
+    "category": "ডিটারজেন্ট পাউডার",
+    "weight": "500g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-159.jpg"
+  },
+  {
+    "name": "Rin Detergent Powder",
+    "bn": "রিন ডিটারজেন্ট পাউডার",
+    "category": "ডিটারজেন্ট পাউডার",
+    "weight": "1kg",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-160.jpg"
+  },
+  {
+    "name": "Rin Detergent Powder",
+    "bn": "রিন ডিটারজেন্ট পাউডার",
+    "category": "ডিটারজেন্ট পাউডার",
+    "weight": "500g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-161.jpg"
+  },
+  {
+    "name": "Surf Excel Detergent Powder",
+    "bn": "সার্ফ এক্সেল ডিটারজেন্ট পাউডার",
+    "category": "ডিটারজেন্ট পাউডার",
+    "weight": "500g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-162.jpg"
+  },
+  {
+    "name": "Surf Excel Detergent Powder",
+    "bn": "সার্ফ এক্সেল ডিটারজেন্ট পাউডার",
+    "category": "ডিটারজেন্ট পাউডার",
+    "weight": "1kg",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-163.jpg"
+  },
+  {
+    "name": "Surf Excel Detergent Powder",
+    "bn": "সার্ফ এক্সেল ডিটারজেন্ট পাউডার",
+    "category": "ডিটারজেন্ট পাউডার",
+    "weight": "2kg",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-164.jpg"
+  },
+  {
+    "name": "Pond's Bright Beauty Face Wash",
+    "bn": "পন্ডস ব্রাইট বিউটি ফেস ওয়াশ",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "50g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-165.jpg"
+  },
+  {
+    "name": "Pond's Pure Detox Face Wash",
+    "bn": "পন্ডস পিওর ডিটক্স ফেস ওয়াশ",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "50g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-166.jpg"
+  },
+  {
+    "name": "Pond's Light Moisturiser",
+    "bn": "পন্ডস লাইট ময়েশ্চারাইজার",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "50ml",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-167.jpg"
+  },
+  {
+    "name": "Pond's Bright Beauty Cream",
+    "bn": "পন্ডস ব্রাইট বিউটি ক্রিম",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "50g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-168.jpg"
+  },
+  {
+    "name": "Pond's Cold Cream",
+    "bn": "পন্ডস কোল্ড ক্রিম",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "50g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-169.jpg"
+  },
+  {
+    "name": "Vaseline Intensive Care Lotion",
+    "bn": "ভ্যাসলিন ইনটেনসিভ কেয়ার লোশন",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "100ml",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-170.jpg"
+  },
+  {
+    "name": "Vaseline Healthy Bright Lotion",
+    "bn": "ভ্যাসলিন হেলদি ব্রাইট লোশন",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "100ml",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-171.jpg"
+  },
+  {
+    "name": "Vaseline Aloe Fresh Lotion",
+    "bn": "ভ্যাসলিন অ্যালোভেরা ফ্রেশ লোশন",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "100ml",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-172.jpg"
+  },
+  {
+    "name": "Vaseline Cocoa Glow Lotion",
+    "bn": "ভ্যাসলিন কোকোয়া গ্লো লোশন",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "100ml",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-173.jpg"
+  },
+  {
+    "name": "Vaseline Petroleum Jelly",
+    "bn": "ভ্যাসলিন পেট্রোলিয়াম জেলি",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "50ml",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-174.jpg"
+  },
+  {
+    "name": "Vaseline Petroleum Jelly",
+    "bn": "ভ্যাসলিন পেট্রোলিয়াম জেলি",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "100ml",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-175.jpg"
+  },
+  {
+    "name": "Dove Beauty Bar",
+    "bn": "ডাভ বিউটি বার",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "100g",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-176.jpg"
+  },
+  {
+    "name": "Dove Intense Repair Shampoo",
+    "bn": "ডাভ ইনটেন্স রিপেয়ার শ্যাম্পু",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "180ml",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-177.jpg"
+  },
+  {
+    "name": "Dove Intense Repair Shampoo",
+    "bn": "ডাভ ইনটেন্স রিপেয়ার শ্যাম্পু",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "180ml",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-178.jpg"
+  },
+  {
+    "name": "Dove Intense Repair Shampoo",
+    "bn": "ডাভ ইনটেন্স রিপেয়ার শ্যাম্পু",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "180ml",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-179.jpg"
+  },
+  {
+    "name": "Dove Intense Repair Shampoo",
+    "bn": "ডাভ ইনটেন্স রিপেয়ার শ্যাম্পু",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "180ml",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-180.jpg"
+  },
+  {
+    "name": "Dove Intense Repair Shampoo",
+    "bn": "ডাভ ইনটেন্স রিপেয়ার শ্যাম্পু",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "180ml",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-181.jpg"
+  },
+  {
+    "name": "Dove Intense Repair Shampoo",
+    "bn": "ডাভ ইনটেন্স রিপেয়ার শ্যাম্পু",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "180ml",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-182.jpg"
+  },
+  {
+    "name": "Dove Intense Repair Shampoo",
+    "bn": "ডাভ ইনটেন্স রিপেয়ার শ্যাম্পু",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "180ml",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-183.jpg"
+  },
+  {
+    "name": "Dove Intense Repair Shampoo",
+    "bn": "ডাভ ইনটেন্স রিপেয়ার শ্যাম্পু",
+    "category": "পার্সোনাল কেয়ার",
+    "weight": "180ml",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-184.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-185.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-186.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-187.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-188.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-189.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-190.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-191.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-192.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-193.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-194.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-195.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-196.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-197.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-198.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-199.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-200.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-201.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-202.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-203.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-204.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-205.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-206.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-207.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-208.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-209.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-210.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-211.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-212.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-213.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-214.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-215.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-216.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-217.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-218.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-219.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-220.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-221.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-222.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-223.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-224.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-225.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-226.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-227.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-228.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-229.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-230.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-231.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-232.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-233.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-234.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-235.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-236.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-237.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-238.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-239.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-240.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-241.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-242.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-243.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-244.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-245.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-246.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-247.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-248.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-249.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-250.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-251.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-252.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-253.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-254.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-255.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-256.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-257.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-258.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-259.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-260.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-261.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-262.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-263.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-264.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-265.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-266.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-267.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-268.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-269.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-270.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-271.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-272.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-273.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-274.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-275.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-276.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-277.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-278.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-279.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-280.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-281.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-282.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-283.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-284.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-285.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-286.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-287.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-288.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-289.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-290.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-291.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-292.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-293.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-294.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-295.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-296.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-297.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-298.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-299.jpg"
+  },
+  {
+    "name": "",
+    "bn": "",
+    "category": "",
+    "weight": "",
+    "marketPrice": null,
+    "sellingPrice": null,
+    "image": "images/product-300.jpg"
+  }
+];
+
+// Change only the values above to add/edit products.
+
+</script>
+<script>
+let cart=JSON.parse(localStorage.getItem('mainulsCart')||'[]');let active='All';
+const DELIVERY_AREAS=['Mirpur 1','Mirpur 2','Mirpur 6','Mirpur 10','Mirpur 11','Mirpur 12','Mirpur 13','Mirpur 14','Kazipara','Shewrapara','Pallabi','Kalshi','ECB Chattar','Uttara Sector 17','Uttara Sector 18','Rupnagar'];
+const esc=s=>String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+function cats(){let cs=['All',...new Set(products.map(p=>p.category).filter(Boolean))];document.getElementById('chips').innerHTML=cs.map(c=>`<button class="chip ${c===active?'active':''}" onclick="active=${JSON.stringify(c)};render();cats()">${esc(c)}</button>`).join('')}
+function emoji(cat=''){cat=cat.toLowerCase();if(cat.includes('চাল')||cat.includes('rice'))return '🍚';if(cat.includes('মসলা')||cat.includes('spice'))return '🌶️';if(cat.includes('দুধ')||cat.includes('milk'))return '🥛';if(cat.includes('ডিম')||cat.includes('egg'))return '🥚';if(cat.includes('পান')||cat.includes('beverage')||cat.includes('drink'))return '🥤';if(cat.includes('ডিশ')||cat.includes('clean')||cat.includes('detergent'))return '🧼';if(cat.includes('care')||cat.includes('শ্যাম্পু'))return '🧴';return '🛍️'}
+function render(){let q=document.getElementById('search').value.toLowerCase();let list=products.filter(p=>(active==='All'||p.category===active)&&((p.name||'').toLowerCase().includes(q)||(p.bn||'').toLowerCase().includes(q)));document.getElementById('resultCount').textContent=list.length+' products';document.getElementById('grid').innerHTML=list.map((p)=>{let real=products.indexOf(p);let save=(p.marketPrice!=null&&p.sellingPrice!=null)?Math.max(0,p.marketPrice-p.sellingPrice):0;let pct=(p.marketPrice>0&&save>0)?Math.round(save/p.marketPrice*100):0;return `<article class="card">${pct?`<div class="badge">SAVE ${pct}%</div>`:''}<div class="pic">${p.image?`<img src="${esc(p.image)}" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">`:''}<span class="emoji" ${p.image?'style="display:none"':''}>${emoji(p.category)}</span></div><div class="info"><div class="name">${esc(p.name)||'New Product Slot '+(real+1)}</div><div class="bn">${esc(p.bn)}</div><div class="weight">⚖️ ${esc(p.weight)||'Weight not added'}</div>${p.sellingPrice!=null?`<div class="prices"><span class="mrp">Market: ৳${p.marketPrice??''}</span>${save?`<span class="save">Save ৳${save}</span>`:''}</div><div class="price">৳${p.sellingPrice}</div><button class="add" onclick="add(${real})">+ ADD TO CART</button>`:`<div class="price" style="font-size:15px;color:#777">Price not added</div><button class="add" onclick="toast('এই product-এর তথ্য এখনো দেওয়া হয়নি')">Add Product</button>`}</div></article>`}).join('')||'<div class="empty">No products found.</div>'}
+function add(i){let p=products[i];if(p.sellingPrice==null){toast('এই product-এর price এখনো দেওয়া হয়নি');return}let x=cart.find(x=>x.i===i);if(x)x.qty++;else cart.push({i,qty:1});save();toast('পণ্য কার্টে যোগ হয়েছে');openCart()}
+function save(){localStorage.setItem('mainulsCart',JSON.stringify(cart));updateCart()}
+function updateCart(){let total=0,count=0;document.getElementById('cart').innerHTML=cart.length?cart.map((x,n)=>{let p=products[x.i];let sub=p.sellingPrice*x.qty;total+=sub;count+=x.qty;return `<div class="cartItem"><div><b>${esc(p.name)}</b><div>${esc(p.weight)} × ${x.qty} = ৳${sub}</div><div class="qty"><button onclick="change(${n},-1)">−</button><b>${x.qty}</b><button onclick="change(${n},1)">+</button><button class="remove" onclick="removeItem(${n})">Remove</button></div></div></div>`}).join(''):'<p style="padding:20px 0;color:#777">আপনার কার্ট খালি।</p>';document.getElementById('total').textContent=total;document.getElementById('count').textContent=count;document.getElementById('barCount').textContent=count;document.getElementById('barTotal').textContent=total;updatePaymentRequirement()}
+function change(n,d){cart[n].qty+=d;if(cart[n].qty<=0)cart.splice(n,1);save()};function removeItem(n){cart.splice(n,1);save()};function openCart(){document.getElementById('panel').classList.add('open');updateCart()};function closeCart(){document.getElementById('panel').classList.remove('open')};function toast(t){let e=document.getElementById('toast');e.textContent=t;e.style.display='block';setTimeout(()=>e.style.display='none',1800)}
+function totalAmount(){return cart.reduce((a,x)=>a+Number(products[x.i].sellingPrice||0)*x.qty,0)}
+function normalizeDigits(v){return String(v||'').replace(/[০-৯]/g,d=>String('০১২৩৪৫৬৭৮৯'.indexOf(d)))}
+function isValidBDPhone(v){v=normalizeDigits(v).replace(/\s|-/g,'');return /^01\d{9}$/.test(v)}
+function clearErrors(){['phone','area','address','trx'].forEach(id=>{let e=document.getElementById(id);if(e)e.classList.remove('invalid')});['nameError','phoneError','areaError','addressError','trxError','formError'].forEach(id=>{let e=document.getElementById(id);if(e){e.style.display='none';e.textContent=''}})}
+function fieldError(inputId,errorId,text){let i=document.getElementById(inputId),e=document.getElementById(errorId);if(i)i.classList.add('invalid');if(e){e.textContent=text;e.style.display='block'}}
+
+function updatePaymentRequirement(){
+  let total=totalAmount(), box=document.getElementById('advanceBox'),method=document.getElementById('paymentMethod');
+  if(!box||!method)return;
+  if(total>=2000){
+    let advance=Math.ceil(total*0.40);
+    box.style.display='block';
+    box.innerHTML=`🔒 <b>৳${total.toLocaleString('en-BD')}</b> অর্ডারের জন্য <b>40% অগ্রিম = ৳${advance.toLocaleString('en-BD')}</b> দিতে হবে।<br>অগ্রিম bKash/Nagad-এ পাঠিয়ে Transaction ID দিতে হবে।`;
+    if(method.value==='Cash on Delivery')method.value='bKash';
+  }else{
+    box.style.display='none';box.innerHTML='';
+  }
+  paymentHint();
+}
+function paymentHint(){
+  let total=totalAmount(),m=document.getElementById('paymentMethod').value,h=document.getElementById('hint'),row=document.getElementById('trxRow'),trx=document.getElementById('trx');
+  if(total>=2000 && m==='Cash on Delivery'){document.getElementById('paymentMethod').value='bKash';m='bKash'}
+  let needsTrx=(m==='bKash'||m==='Nagad');
+  if(needsTrx){
+    h.style.display='block';
+    let advance=total>=2000?Math.ceil(total*0.40):0;
+    h.innerHTML=advance?`💳 <b>${m}</b> নম্বরে <b>৳${advance.toLocaleString('en-BD')}</b> অগ্রিম পাঠান: <b>01717985224</b><br>পেমেন্টের পর নিচে Transaction ID (TrxID) দিন।`:`💳 <b>${m}</b>-এ পেমেন্ট করলে <b>01717985224</b> নম্বরে পাঠিয়ে নিচে Transaction ID (TrxID) দিন।`;
+    row.style.display='block';
+  }else{
+    h.style.display='none';h.innerHTML='';row.style.display='none';trx.value='';
+  }
+}
+function showTrxHelp(){document.getElementById('trxModal').style.display='flex'}
+function closeTrxHelp(){document.getElementById('trxModal').style.display='none'}
+
+function validateOrder(){
+  clearErrors();
+  let ok=true,total=totalAmount();
+  if(!cart.length){let e=document.getElementById('formError');e.textContent='আপনার কার্টে কোনো পণ্য নেই। আগে পণ্য যোগ করুন।';e.style.display='block';return false}
+  if(total<200){let e=document.getElementById('formError');e.textContent=`সর্বনিম্ন অর্ডার ৳200। আপনার অর্ডারের মূল্য ৳${total}। আরও ৳${200-total} মূল্যের পণ্য যোগ করুন।`;e.style.display='block';return false}
+  let name=document.getElementById('customer').value.trim(),phone=document.getElementById('phone').value.trim(),area=document.getElementById('area').value,address=document.getElementById('address').value.trim(),method=document.getElementById('paymentMethod').value,trx=document.getElementById('trx').value.trim();
+  if(!name){fieldError('customer','nameError','আপনার নাম লিখুন।');ok=false}
+  if(!isValidBDPhone(phone)){fieldError('phone','phoneError','সঠিক ১১ সংখ্যার বাংলাদেশি মোবাইল নম্বর দিন। উদাহরণ: 017XXXXXXXX');ok=false}
+  if(!DELIVERY_AREAS.includes(area)){fieldError('area','areaError','অনুগ্রহ করে তালিকা থেকে আপনার ডেলিভারি এলাকা নির্বাচন করুন।');ok=false}
+  if(!address){fieldError('address','addressError','বিস্তারিত ঠিকানা দিন—বাসা/বাড়ি, রোড, ব্লক, ফ্ল্যাট/তলা ইত্যাদি।');ok=false}
+  if(total>=2000 && !['bKash','Nagad'].includes(method)){let e=document.getElementById('formError');e.textContent='৳2,000 বা তার বেশি অর্ডারের ক্ষেত্রে 40% অগ্রিম bKash/Nagad-এ দিতে হবে।';e.style.display='block';ok=false}
+  if((method==='bKash'||method==='Nagad')&&!trx){fieldError('trx','trxError','পেমেন্টের SMS/অ্যাপ থেকে TrxID/Transaction ID লিখুন। “Transaction ID কী?” বাটনে বিস্তারিত দেখুন।');ok=false}
+  if(!ok){let first=document.querySelector('.invalid');if(first)first.scrollIntoView({behavior:'smooth',block:'center'});else document.getElementById('formError').scrollIntoView({behavior:'smooth',block:'center'});return false}
+  return true;
+}
+function sendWhatsApp(){
+  if(!validateOrder())return;
+  let name=document.getElementById('customer').value.trim(),phone=normalizeDigits(document.getElementById('phone').value.trim()),area=document.getElementById('area').value,address=document.getElementById('address').value.trim(),method=document.getElementById('paymentMethod').value,trx=document.getElementById('trx').value.trim(),total=totalAmount(),advance=total>=2000?Math.ceil(total*0.40):0;
+  let msg=`🛒 MAINUL'S GROCERIES — নতুন অর্ডার\n\n👤 নাম: ${name}\n📞 মোবাইল: ${phone}\n📍 ডেলিভারি এলাকা: ${area}\n🏠 বিস্তারিত ঠিকানা: ${address}\n\n🛍️ পণ্য:\n`+cart.map((x,i)=>`${i+1}. ${products[x.i].name} (${products[x.i].weight}) × ${x.qty} = ৳${products[x.i].sellingPrice*x.qty}`).join('\n')+`\n\n💰 মোট: ৳${total}\n💳 পেমেন্ট: ${method}${advance?`\n🔐 প্রয়োজনীয় অগ্রিম (40%): ৳${advance}`:''}${trx?`\n🧾 Transaction ID (TrxID): ${trx}`:''}`;
+  window.open('https://wa.me/8801972840337?text='+encodeURIComponent(msg),'_blank');
+}
+cats();render();updateCart();
+</script>
+</body></html>
